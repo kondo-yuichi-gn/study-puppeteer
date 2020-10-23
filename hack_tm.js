@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
   const browser = await puppeteer.launch({
     // devtools: true,
     headless: false,
-    slowMo: 250,
+    slowMo: 100,
     args: ['--start-fullscreen']
   })
   const page = await browser.newPage()
@@ -39,11 +39,12 @@ const puppeteer = require('puppeteer');
   await page.click('.v-select-list > div > div:nth-child(1)')
 
   // 施策カテゴリ選択
-  await page.type('form > div:nth-child(2) input', 'TD')
+  await page.type('form > div:nth-child(2) input', 'AD施策')
   await page.click('.v-menu__content.menuable__content__active.v-autocomplete__content')
 
   // 施策選択
-  await page.click('form > div:nth-child(3) div.v-input__slot > div > div:nth-child(2)')
+  // await page.click('form > div:nth-child(3) div.v-input__slot > div > div:nth-child(2)')
+  await page.click('#app > div.v-application--wrap > div > div > form > div.v-input.pl-3.theme--light.v-input--selection-controls.v-input--radio-group.v-input--radio-group--row > div > div.v-input__slot > div > div:nth-child(2) > div.v-radio.theme--light > div > div')
 
   // タスク名入力
   await page.type('form > div:nth-child(4) input', 'あ')
